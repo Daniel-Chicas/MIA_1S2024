@@ -1,0 +1,12 @@
+#Calificacion
+# --- PARTE 1 ---
+#CREACION DE DISCOS
+mkdisk -size=112 -unit=M -path=/home/daniel/Escritorio/disco.dk
+mkdisk -size=1 -path="/home/daniel/Escritorio/eliminar.dk"
+
+pause
+
+#Eliminacion de discos
+rmdisk -path="/home/daniel/Escritorio/eliminar.dk"
+
+pause
