@@ -126,6 +126,12 @@ func funciones(token string, tks []string) {
 		} else if Comandos.Comparar(token, "RMDISK") {
 			fmt.Println("*************************************** FUNCIÓN RMDISK **************************************")
 			Comandos.RMDISK(tks)
+		} else if Comandos.Comparar(token, "FDISK") {
+			fmt.Println("*************************************** FUNCIÓN FDISK  **************************************")
+			Comandos.ValidarDatosFDISK(tks)
+		} else if Comandos.Comparar(token, "MOUNT") {
+			fmt.Println("*************************************** FUNCIÓN MOUNT  **************************************")
+			Comandos.ValidarDatosMOUNT(tks)
 		} else {
 			Comandos.Error("ANALIZADOR", "No se reconoce el comando \""+token+"\"")
 		}

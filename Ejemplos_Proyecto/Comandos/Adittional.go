@@ -30,10 +30,7 @@ func Confirmar(mensaje string) bool {
 	fmt.Println(mensaje + " (y/n)")
 	var respuesta string
 	fmt.Scanln(&respuesta)
-	if Comparar(respuesta, "y") {
-		return true
-	}
-	return false
+	return Comparar(respuesta, "y")
 }
 
 func ArchivoExiste(ruta string) bool {

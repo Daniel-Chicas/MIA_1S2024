@@ -170,7 +170,6 @@ func RMDISK(tokens []string) {
 		return
 	}
 	path := ""
-	error_ := false
 	for i := 0; i < len(tokens); i++ {
 		token := tokens[i]
 		tk := strings.Split(token, "=")
@@ -183,12 +182,8 @@ func RMDISK(tokens []string) {
 			}
 		} else {
 			Error("RMDISK", "no se esperaba el parametro "+tk[0])
-			error_ = true
 			return
 		}
-	}
-	if error_ {
-		return
 	}
 	if path == "" {
 		Error("RMDISK", "se requiere parametro Path para este comando")
@@ -208,13 +203,11 @@ func RMDISK(tokens []string) {
 				Error("RMDISK", "Error al intentar eliminar el archivo. :c")
 				return
 			}
-			Mensaje("RMDISK", "Disco ubicado en "+path+", ha sido eliminado exitosamente.")
+			Mensaje("RMDISK", "Disco ubicado en "+path+", ha sido eliminado exitosamente. :D")
 			return
 		} else {
-			Mensaje("RMDISK", "Eliminación del disco "+path+", cancelada exitosamente.")
+			Mensaje("RMDISK", "Eliminación del disco "+path+", cancelada exitosamente. :D")
 			return
 		}
-
 	}
-
 }
