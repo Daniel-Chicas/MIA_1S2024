@@ -1,0 +1,34 @@
+#Calificacion
+# --- PARTE 1 ---
+#CREACION DE DISCOS
+mkdisk -size=200 -unit=M -path=C:/Users/danie/Desktop/disco.dk
+mkdisk -size=1 -path="C:/Users/danie/Desktop/eliminar.dk"
+
+pause
+
+#Eliminacion de discos
+rmdisk -path="C:/Users/danie/Desktop/eliminar.dk"
+
+pause
+
+#CREACIÓN DE PARTICIONES
+fdisk -type=P -unit=M -name=Part1 -size=25 -path=C:/Users/danie/Desktop/disco.dk
+fdisk -type=P -unit=M -name=Part2 -size=25 -path=C:/Users/danie/Desktop/disco.dk
+fdisk -type=P -unit=M -name=Part3 -size=25 -path=C:/Users/danie/Desktop/disco.dk
+fdisk -type=E -unit=M -name=Part4 -size=30 -path=C:/Users/danie/Desktop/disco.dk
+fdisk -type=L -unit=M -name=Part5 -size=25 -path=C:/Users/danie/Desktop/disco.dk
+
+
+pause
+
+#MOUNT CARNET DE EJEMPLO 201807079
+#791a
+mount -path=C:/Users/danie/Desktop/disco.dk -name=Part1
+#791b
+mount -path=C:/Users/danie/Desktop/disco.dk -name=Part2
+mount -path=C:/Users/danie/Desktop/disco.dk -name=Part3
+mount -path=C:/Users/danie/Desktop/disco.dk -name=Part4
+mount -path=C:/Users/danie/Desktop/disco.dk -name=Part5
+
+#MKFS
+mkfs -type=fast -id=791a

@@ -10,6 +10,7 @@ import (
 )
 
 // exec -path=/home/daniel/Escritorio/MIA_1S2024/Ejemplos_Proyecto/calificacion.script
+// exec -path=C:\Users\danie\Desktop\PRIMER_SEMESTRE_2024\MIA_1S2024\Ejemplos_Proyecto\calificacionWindows.script
 
 func main() {
 	for {
@@ -132,6 +133,9 @@ func funciones(token string, tks []string) {
 		} else if Comandos.Comparar(token, "MOUNT") {
 			fmt.Println("*************************************** FUNCIÓN MOUNT  **************************************")
 			Comandos.ValidarDatosMOUNT(tks)
+		} else if Comandos.Comparar(token, "MKFS") {
+			fmt.Println("*************************************** FUNCIÓN MKFS  **************************************")
+			Comandos.ValidarDatosMKFS(tks)
 		} else {
 			Comandos.Error("ANALIZADOR", "No se reconoce el comando \""+token+"\"")
 		}
