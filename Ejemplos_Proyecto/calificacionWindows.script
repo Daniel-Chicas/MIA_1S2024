@@ -32,3 +32,44 @@ mount -path=C:/Users/danie/Desktop/disco.dk -name=Part5
 
 #MKFS
 mkfs -type=fast -id=791a
+
+
+#INICIO DE SESION
+#Debe dar error porque no existe el usuario roca
+Login -password=567 -usuario=roca -id=791a
+
+#Debe dar error porque no existe usuario logeado
+logout
+
+Login -password=123 -usuario=root -id=791a
+
+pause
+
+#CREACION DE GRUPOS
+mkgrp -naMe=Archivos
+mkgrp -NamE=Arqui
+mkgrp -name="Compi 2"
+
+pause
+
+#ELIMINACION DE GRUPOS
+rmgrp -name=Arqui
+
+pause
+
+#REPORTES FILE
+rep -id=791a -Path="/home/mia/parte2/reportes/users_1.txt" -ruta="/users.txt" -name=file
+
+pause
+
+#CREACION DE USUARIOS
+Mkuser -usuario="user1" -grp=root -pwd=user1
+Mkuser -usuario="user2" -grp="Compi 2" -pwd=user2
+Mkuser -usuario="user3" -grp="Compi 2" -pwd=user3
+
+pause
+
+#ELIMINACION DE USUARIOS
+rmusr -usuario=user3
+
+pause

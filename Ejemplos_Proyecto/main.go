@@ -12,6 +12,8 @@ import (
 // exec -path=/home/daniel/Escritorio/MIA_1S2024/Ejemplos_Proyecto/calificacion.script
 // exec -path=C:\Users\danie\Desktop\PRIMER_SEMESTRE_2024\MIA_1S2024\Ejemplos_Proyecto\calificacionWindows.script
 
+var logued = false
+
 func main() {
 	for {
 		fmt.Println(">>>>>>>>>>>>>>>>>>>>>>>>> INGRESE UN COMANDO <<<<<<<<<<<<<<<<<<<<<<<<<")
@@ -136,6 +138,54 @@ func funciones(token string, tks []string) {
 		} else if Comandos.Comparar(token, "MKFS") {
 			fmt.Println("*************************************** FUNCIÓN MKFS  **************************************")
 			Comandos.ValidarDatosMKFS(tks)
+		} else if Comandos.Comparar(token, "LOGIN") {
+			fmt.Println("*************************************** FUNCIÓN LOGIN  **************************************")
+			if logued {
+				Comandos.Error("LOGIN", "Ya hay un usuario en línea.")
+				return
+			} else {
+				logued = Comandos.ValidarDatosLOGIN(tks)
+			}
+		} else if Comandos.Comparar(token, "LOGOUT") {
+			fmt.Println("*************************************** FUNCIÓN LOGOUT  **************************************")
+			if !logued {
+				Comandos.Error("LOGOUT", "Aún no se ha iniciado sesión.")
+				return
+			} else {
+				logued = Comandos.CerrarSesion()
+			}
+		} else if Comandos.Comparar(token, "MKGRP") {
+			fmt.Println("*************************************** FUNCIÓN MKGRP  **************************************")
+			if !logued {
+				Comandos.Error("MKGRP", "Aún no se ha iniciado sesión.")
+				return
+			} else {
+				Comandos.ValidarDatosGrupos(tks, "MK")
+			}
+		} else if Comandos.Comparar(token, "RMGRP") {
+			fmt.Println("*************************************** FUNCIÓN RMGRP  **************************************")
+			if !logued {
+				Comandos.Error("RMGRP", "Aún no se ha iniciado sesión.")
+				return
+			} else {
+				Comandos.ValidarDatosGrupos(tks, "RM")
+			}
+		} else if Comandos.Comparar(token, "MKUSER") {
+			fmt.Println("*************************************** FUNCIÓN MKUSER  **************************************")
+			if !logued {
+				Comandos.Error("MKUSER", "Aún no se ha iniciado sesión.")
+				return
+			} else {
+				Comandos.ValidarDatosUsers(tks, "MK")
+			}
+		} else if Comandos.Comparar(token, "RMUSR") {
+			fmt.Println("*************************************** FUNCIÓN RMUSER  **************************************")
+			if !logued {
+				Comandos.Error("RMUSER", "Aún no se ha iniciado sesión.")
+				return
+			} else {
+				Comandos.ValidarDatosUsers(tks, "RM")
+			}
 		} else {
 			Comandos.Error("ANALIZADOR", "No se reconoce el comando \""+token+"\"")
 		}
