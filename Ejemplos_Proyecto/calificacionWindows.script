@@ -16,7 +16,10 @@ fdisk -type=P -unit=M -name=Part1 -size=25 -path=C:/Users/danie/Desktop/disco.dk
 fdisk -type=P -unit=M -name=Part2 -size=25 -path=C:/Users/danie/Desktop/disco.dk
 fdisk -type=P -unit=M -name=Part3 -size=25 -path=C:/Users/danie/Desktop/disco.dk
 fdisk -type=E -unit=M -name=Part4 -size=30 -path=C:/Users/danie/Desktop/disco.dk
-fdisk -type=L -unit=M -name=Part5 -size=25 -path=C:/Users/danie/Desktop/disco.dk
+fdisk -type=L -unit=M -name=Part5 -size=10 -path=C:/Users/danie/Desktop/disco.dk
+fdisk -type=L -unit=M -name=Part6 -size=10 -path=C:/Users/danie/Desktop/disco.dk
+fdisk -type=L -unit=M -name=Part7 -size=5 -path=C:/Users/danie/Desktop/disco.dk
+fdisk -type=L -unit=M -name=Part8 -size=5 -path=C:/Users/danie/Desktop/disco.dk
 
 
 pause
@@ -57,11 +60,6 @@ rmgrp -name=Arqui
 
 pause
 
-#REPORTES FILE
-rep -id=791a -Path="/home/mia/parte2/reportes/users_1.txt" -ruta="/users.txt" -name=file
-
-pause
-
 #CREACION DE USUARIOS
 Mkuser -usuario="user1" -grp=root -pwd=user1
 Mkuser -usuario="user2" -grp="Compi 2" -pwd=user2
@@ -73,3 +71,10 @@ pause
 rmusr -usuario=user3
 
 pause
+
+#CREACION DE CARPETAS
+Mkdir -P -path=/home/archivos/mia/fase2
+Mkdir -P -path=/home/archivos/mia/carpeta2
+Mkdir -P -path=/home/archivos/mia/z
+
+rep -id=791a -Path="/home/mia/parte2/reportes/tree_1.pdf" -name=tree

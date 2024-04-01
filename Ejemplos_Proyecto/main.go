@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Ejemplos_Proyecto/Comandos"
+	"MIA_Proyecto2_201807079/Comandos"
 	"bufio"
 	"fmt"
 	"log"
@@ -9,21 +9,20 @@ import (
 	"strings"
 )
 
-// exec -path=/home/daniel/Escritorio/MIA_1S2024/Ejemplos_Proyecto/calificacion.script
-// exec -path=C:\Users\danie\Desktop\PRIMER_SEMESTRE_2024\MIA_1S2024\Ejemplos_Proyecto\calificacionWindows.script
+// 					exec -path=/home/daniel/Escritorio/ArchivosPrueba/Calificacion_Proyecto2.script
 
 var logued = false
 
-func main() {
-	for {
+func main() { 
+	for true {
 		fmt.Println(">>>>>>>>>>>>>>>>>>>>>>>>> INGRESE UN COMANDO <<<<<<<<<<<<<<<<<<<<<<<<<")
-		fmt.Println("--->>> Si desesa terminar con la aplicación ingrese \"exit\"")
+		fmt.Println("--->>>Si desesa terminar con la aplicación ingrese \"exit\"")
 		fmt.Print("\t")
 
 		reader := bufio.NewReader(os.Stdin)
 		entrada, _ := reader.ReadString('\n')
 		eleccion := strings.TrimRight(entrada, "\r\n")
-		if eleccion == "exit" {
+		if eleccion == "exit" { 
 			break
 		}
 		comando := Comando(eleccion)
@@ -138,6 +137,9 @@ func funciones(token string, tks []string) {
 		} else if Comandos.Comparar(token, "MKFS") {
 			fmt.Println("*************************************** FUNCIÓN MKFS  **************************************")
 			Comandos.ValidarDatosMKFS(tks)
+		} else if Comandos.Comparar(token, "REP") {
+			fmt.Println("*************************************** FUNCIÓN REP  **************************************")
+			Comandos.ValidarDatosREP(tks)
 		} else if Comandos.Comparar(token, "LOGIN") {
 			fmt.Println("*************************************** FUNCIÓN LOGIN  **************************************")
 			if logued {
@@ -186,6 +188,26 @@ func funciones(token string, tks []string) {
 			} else {
 				Comandos.ValidarDatosUsers(tks, "RM")
 			}
+		} else if Comandos.Comparar(token, "MKDIR") {
+			fmt.Println("*************************************** FUNCIÓN MKDIR  **************************************")
+			if !logued {
+				Comandos.Error("MKDIR", "Aún no se ha iniciado sesión.")
+				return
+			} else {
+				var p string
+				particion := Comandos.GetMount("MKDIR", Comandos.Logged.Id, &p)
+				Comandos.ValidarDatosMKDIR(tks, particion, p)
+			}
+		} else if Comandos.Comparar(token, "MKFILE") {
+			fmt.Println("*************************************** FUNCIÓN MKFILE  **************************************")
+			if !logued {
+				Comandos.Error("MKFILE", "Aún no se ha iniciado sesión.")
+				return
+			} else {
+				var p string
+				particion := Comandos.GetMount("MKDIR", Comandos.Logged.Id, &p)
+				Comandos.ValidarDatosMKFILE(tks, particion, p)
+			}
 		} else {
 			Comandos.Error("ANALIZADOR", "No se reconoce el comando \""+token+"\"")
 		}
@@ -201,7 +223,7 @@ func FuncionExec(tokens []string) {
 		}
 	}
 	if path == "" {
-		Comandos.Error("EXEC", "Se requiere el parámetro \"path\" para este comando")
+		Comandos.Error("EXEC", "Se requiere la \"path\" para este comando")
 		return
 	}
 	Exec(path)

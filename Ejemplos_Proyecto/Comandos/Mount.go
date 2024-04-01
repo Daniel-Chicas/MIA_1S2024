@@ -1,7 +1,7 @@
 package Comandos
 
 import (
-	"Ejemplos_Proyecto/Structs"
+	"MIA_Proyecto2_201807079/Structs"
 	"bytes"
 	"encoding/binary"
 	"fmt"
@@ -32,7 +32,9 @@ func ValidarDatosMOUNT(context []string) {
 	path := ""
 	for i := 0; i < len(context); i++ {
 		current := context[i]
+
 		comando := strings.Split(current, "=")
+
 		if Comparar(comando[0], "name") {
 			name = comando[1]
 		} else if Comparar(comando[0], "path") {

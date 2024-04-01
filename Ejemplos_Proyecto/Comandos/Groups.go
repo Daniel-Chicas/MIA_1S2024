@@ -1,7 +1,7 @@
 package Comandos
 
 import (
-	"Ejemplos_Proyecto/Structs"
+	"MIA_Proyecto2_201807079/Structs"
 	"bytes"
 	"encoding/binary"
 	"os"
@@ -9,6 +9,8 @@ import (
 	"strings"
 	"unsafe"
 )
+
+//    exec -path=/home/daniel/Escritorio/ArchivosPrueba/ArchivoEjemplo2.script
 
 func ValidarDatosGrupos(context []string, action string) {
 	name := ""

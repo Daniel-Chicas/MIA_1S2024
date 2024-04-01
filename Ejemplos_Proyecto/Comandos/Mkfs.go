@@ -1,7 +1,7 @@
 package Comandos
 
 import (
-	"Ejemplos_Proyecto/Structs"
+	"MIA_Proyecto2_201807079/Structs"
 	"bytes"
 	"encoding/binary"
 	"math"
@@ -35,6 +35,8 @@ func ValidarDatosMKFS(context []string) {
 	}
 	mkfs(id, tipo)
 }
+
+//  exec -path=/home/daniel/Escritorio/ArchivosPrueba/ArchivoEjemplo2.script
 
 func mkfs(id string, t string) {
 	p := ""
@@ -88,6 +90,7 @@ func ext2(spr Structs.SuperBloque, p Structs.Particion, n int64, path string) {
 		binary.Write(&binarioZero, binary.BigEndian, zero)
 		EscribirBytes(file, binarioZero.Bytes())
 	}
+
 	inode := Structs.NewInodos()
 	//INICIALIZANDO EL INODO
 	inode.I_uid = -1

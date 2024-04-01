@@ -1,7 +1,7 @@
 package Comandos
 
 import (
-	"Ejemplos_Proyecto/Structs"
+	"MIA_Proyecto2_201807079/Structs"
 	"bytes"
 	"crypto/rand"
 	"encoding/binary"
@@ -11,6 +11,8 @@ import (
 	"strings"
 	"time"
 )
+
+// exec -path=/home/daniel/Escritorio/ArchivosPrueba/ArchivoEjemplo2.script
 
 func ValidarDatosMKDISK(tokens []string) {
 	size := ""
@@ -170,6 +172,7 @@ func RMDISK(tokens []string) {
 		return
 	}
 	path := ""
+	error_ := false
 	for i := 0; i < len(tokens); i++ {
 		token := tokens[i]
 		tk := strings.Split(token, "=")
@@ -182,8 +185,12 @@ func RMDISK(tokens []string) {
 			}
 		} else {
 			Error("RMDISK", "no se esperaba el parametro "+tk[0])
+			error_ = true
 			return
 		}
+	}
+	if error_ {
+		return
 	}
 	if path == "" {
 		Error("RMDISK", "se requiere parametro Path para este comando")
@@ -203,11 +210,13 @@ func RMDISK(tokens []string) {
 				Error("RMDISK", "Error al intentar eliminar el archivo. :c")
 				return
 			}
-			Mensaje("RMDISK", "Disco ubicado en "+path+", ha sido eliminado exitosamente. :D")
+			Mensaje("RMDISK", "Disco ubicado en "+path+", ha sido eliminado exitosamente.")
 			return
 		} else {
-			Mensaje("RMDISK", "Eliminación del disco "+path+", cancelada exitosamente. :D")
+			Mensaje("RMDISK", "Eliminación del disco "+path+", cancelada exitosamente.")
 			return
 		}
+
 	}
+
 }

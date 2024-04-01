@@ -1,7 +1,7 @@
 package Comandos
 
 import (
-	"Ejemplos_Proyecto/Structs"
+	"MIA_Proyecto2_201807079/Structs"
 	"bytes"
 	"encoding/binary"
 	"os"
