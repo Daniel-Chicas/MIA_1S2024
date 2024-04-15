@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  backend:
+    container_name: backend
+    restart: always
+    build: ./Backend
+    ports:
+      - "3000:3000"
+    networks:
+      - default1
+
+networks:
+  default1:

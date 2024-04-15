@@ -1,0 +1,7 @@
+FROM golang:alpine
+WORKDIR /Go
+COPY . .
+RUN go mod download
+
+EXPOSE 3000
+CMD ["go","run","main.go"]

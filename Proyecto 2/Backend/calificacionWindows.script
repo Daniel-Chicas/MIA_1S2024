@@ -1,0 +1,5 @@
+#Calificacion
+# --- PARTE 1 ---
+#CREACION DE DISCOS
+mkdisk -size=200 -unit=M -path=C:/Users/danie/Desktop/disco.dk
+mkdisk -size=1 -path="C:/Users/danie/Desktop/eliminar.dk"
