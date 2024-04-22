@@ -1,0 +1,11 @@
+.Nav {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  border-radius: 0% !important;
+  height: 50px !important;
+}
+
+.ml-auto {
+  margin-left: auto !important;
+  color: rgb(203, 141, 17) !important;
+}
